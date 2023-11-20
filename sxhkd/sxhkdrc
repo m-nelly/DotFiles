@@ -1,0 +1,37 @@
+# reload config
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+# quit or restart bspwm
+alt + shift + {q,r}
+	bspc {quit, wm -r}
+
+# close or kill a window
+alt + {_,shift +} w
+	bspc node -{k,c}
+
+# resize windows using vim keybinds
+alt + shift + {Left,Down,Up,Right}
+	bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+
+# create new terminal 
+ctrl + alt + t
+	urxvt
+# create new firefox 
+ctrl + alt + f
+	firefox
+# workspaces
+super + {1-4}
+	bspc desktop -f focused:'^{1-4}'
+ctrl + shift  + {Left,Right}
+	bspc desktop -f {prev,next}.local
+# logout 
+super + l
+	bspc quit
+# screenshot
+Print
+	flameshot gui
+
+# rofi launcher
+alt + @space
+	rofi -show drun

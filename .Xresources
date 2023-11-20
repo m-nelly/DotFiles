@@ -1,0 +1,51 @@
+!! Color Scheme
+
+! special
+*.foreground:	#cccac2
+*.background:	#171b24
+*.cursorColor:	#cccac2
+
+! black
+*.color0:	#1f2430
+*.color8:	#171b24
+
+! red
+*.color1:	#f27983
+*.color9:	#f27983
+
+! green
+*.color2:	#87d96c
+*.color10:	#87d96c
+
+! yellow
+*.color3:	#ffcc66
+*.color11:	#ffcc66
+
+! blue
+*.color4:	#80bfff
+*.color12:	#80bfff
+
+! magenta
+*.color5:	#dfbfff
+*.color13:	#dfbfff
+
+! cyan
+*.color6:	#95e6cb
+*.color14:	#95e6cb
+
+! white
+*.color7:	#cccac2
+*.color15:	#707a8c
+
+!! Appearance
+
+URxvt.font:	xft:IBM 3270:style=Regular:size=16
+URxvt.boldFont:	xft:IBM 3270:style=Regular:size=16
+
+URxvt.scrollBar: false
+
+!! Behavior
+
+! Disable ISO14755 Mode
+URxvt.iso14755: 	false
+URxvt.iso14755_52: 	false

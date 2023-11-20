@@ -1,0 +1,81 @@
+configuration {
+	display-drun: "Applicaitons:";
+	display-window: "Windows:";
+	drun-display-format: "{icon} {name}";
+	font: "IBM 3270 Regular 16";
+	modi: "window,drun";
+	show-icons: true;
+	icon-theme: "Adwaita-Dark";
+}
+
+@theme "/dev/null"
+
+* {
+	bg: #1a1f29;
+	bg-alt: #1f2430;
+	fg: #cccac2;
+	fg-alt: #cccac2;
+
+	border: 0;
+	margin: 0;
+	padding: 0;
+	spacing: 0;
+}
+
+window {
+	width: 45%;
+	background-color: @bg;
+	
+	border: 1;
+	border-color: @fg;
+}
+
+element{
+	padding:8 12;
+	background-color: @bg;
+	text-color: @fg;	
+}
+
+element selected{
+	background-color: @bg-alt;
+	text-color: @fg;
+}
+
+element-text{
+	text-color: inherit;
+	background-color: inherit;
+	vertical-align: 0.5;
+}
+
+element-icon {
+	background-color: transparent;
+	size: 30;
+}
+
+inputbar {
+	children: [prompt, entry];
+	text-color: @fg;
+}
+
+listview {
+	background-color: @bg-alt;
+	columns: 1;
+	lines: 4;
+}
+
+mainbox {
+	children: [inputbar, listview];
+}
+
+prompt {
+	enabled:true;	
+	padding: 12 0 0 12;
+	background-color: @bg;
+	text-color: @fg;
+}
+
+entry {
+	text-color: @fg;
+	background-color: @bg;
+	padding: 12 0 0 12;
+}

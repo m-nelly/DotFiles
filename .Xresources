@@ -39,12 +39,14 @@
 
 !! Appearance
 
-URxvt.font:	xft:IBM 3270:style=Regular:size=16
-URxvt.boldFont:	xft:IBM 3270:style=Regular:size=16
+URxvt.font:	xft:Noto Sans Mono:style=Regular:size=14
+URxvt.boldFont:	xft:Noto Sans Mono:style=Regular:size=14
 
 URxvt.scrollBar: false
 
 !! Behavior
+URxvt.clipboard.autocopy: true
+URxvt.perl-ext-common: selection-to-clipboard
 
 ! Disable ISO14755 Mode
 URxvt.iso14755: 	false

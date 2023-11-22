@@ -1,9 +1,9 @@
 configuration {
-	display-drun: "Applicaitons:";
+	display-drun: "Applications:";
 	display-window: "Windows:";
 	drun-display-format: "{icon} {name}";
 	font: "IBM 3270 Regular 16";
-	modi: "window,drun";
+	modi: "window,drun,emoji";
 	show-icons: true;
 	icon-theme: "Adwaita-Dark";
 }

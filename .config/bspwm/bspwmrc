@@ -3,8 +3,10 @@ bspc monitor -d I II III IV V VI
 xsetroot -cursor_name left_ptr
 xsetroot -solid "#0a0e14"
 sxhkd &
-polybar &
+polybar top &
+polybar bottom &
 rxvt
+wmname LG3D
 
 bspc config border_width		1
 bspc config window_gap			8

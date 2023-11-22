@@ -75,8 +75,6 @@ if [ "$color_prompt" = yes ]; then
     # Disable VENV Prompt
     VIRTUAL_ENV_DISABLE_PROMPT=1
 
-    configure_prompt
-
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -133,8 +131,10 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-## NeoFetch
+## Auto Run
 neofetch --disable gpu packages resolution kernel uptime --speed_shorthand on --cpu_cores off --distro_shorthand on --disk_percent on --colors 4 3 3 3 3 4 --bold on --ascii_colors 3 4
+
+wmname LG3D
 
 ## ZSH Cache Directory
 ZDOTDIR="~/.cache/zsh/"
@@ -157,9 +157,11 @@ fi
 ### System Management
 alias notes="cd ~/notes"
 alias update="sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove"
-alias host="sudo vim hosts"
+alias hosts="sudo vim /etc/hosts"
 
 ## File System
 alias ll="ls -l"
 alias la="ls -la"
 
+# VPN
+alias htb="sudo openvpn --config '/home/mnelly/.config/htb.ovpn' --daemon"

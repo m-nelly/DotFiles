@@ -1,0 +1,16 @@
+build/
+*.m4
+configure
+config.*
+Makefile.in
+ar-lib
+autom4te.cache/
+compile
+depcomp
+install-sh
+ltmain.sh
+missing
+test-driver
+
+compile_commands.json
+.ccls-cache/

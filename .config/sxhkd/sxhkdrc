@@ -31,3 +31,5 @@ Print
 # rofi launcher
 alt + @space
 	rofi -show drun
+XF86WakeUp
+	rofi -show emoji

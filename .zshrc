@@ -1,12 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' mode auto # update automatically without asking
 zstyle ':omz:update' frequency 7
 
 plugins=(git)
@@ -15,12 +10,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Customizations
 ## Prompt
-PROMPT=$'%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n%(#.@.@)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+PROMPT=$'%F{%(#.blue.cyan)}┌──(%B%F{%(#.red.blue)}%n%(#.@.@)%m%b%F{%(#.blue.cyan)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.cyan)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 
 ## PATH
@@ -40,11 +31,11 @@ if [ -d "$HOME/.local/bin" ] ; then
 	PATH="$PATH:$HOME/.local/bin"
 fi
 
-# Key Binding
+## Key Binding
 bindkey '^[[1;5C' forward-word                    # ctrl + ->
 bindkey '^[[1;5D' backward-word                   # ctrl + <-
 
-# Completion Features
+## Completion Features
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
@@ -59,7 +50,7 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Color Prompt
+## Color Prompt
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -70,13 +61,21 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Syntax Highlighting 
+## Syntax Highlighting 
 if [ "$color_prompt" = yes ]; then
-    # Disable VENV Prompt
-    VIRTUAL_ENV_DISABLE_PROMPT=1
+### Disable VENV Prompt
+VIRTUAL_ENV_DISABLE_PROMPT=1
 
+### Check for Syntax Highlighting plugin
+syntax_highlighting_path=''
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-        . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        syntax_highlighting_path="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    elif [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ]; then
+        syntax_highlighting_path="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+    fi
+
+    if [ -f $syntax_highlighting_path ]; then 
+        . $syntax_highlighting_path
         ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
         ZSH_HIGHLIGHT_STYLES[default]=none
         ZSH_HIGHLIGHT_STYLES[unknown-token]=underline
@@ -124,27 +123,32 @@ else
     PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%(#.#.$) '
 fi
 
-# Auto Suggestions
+## Auto Suggestions
+auto_suggestions_path=''
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # change suggestion color
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+    auto_suggestions_path="/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+elif [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ]; then
+    auto_suggestions_path="/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+fi
+
+if [ -f $auto_suggestions_path ]; then
+    . $auto_suggestions_path
+### Change Suggestion Color
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#707a8c'
 fi
 
 ## Auto Run
-neofetch --disable gpu packages resolution kernel uptime --speed_shorthand on --cpu_cores off --distro_shorthand on --disk_percent on --colors 4 3 3 3 3 4 --bold on --ascii_colors 3 4
-
-wmname LG3D
+neofetch --disable gpu packages resolution kernel uptime --speed_shorthand on --cpu_cores off --distro_shorthand on --disk_percent on --colors 4 3 3 3 3 4 --bold on --ascii_colors 4 4
 
 ## ZSH Cache Directory
 ZDOTDIR="~/.cache/zsh/"
 ZSH_COMPDUMP="~/.cache/zsh/zcompdump/.zcompdump-anchor-5.9"
 
 ## Aliases
-# Color Aliases
+### Color Aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
+    export LS_COLORS="$LS_COLORS:ow=30;44:"
 
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
@@ -154,14 +158,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias ip='ip --color=auto'
 fi
 
-### System Management
+### Tools
 alias notes="cd ~/notes"
 alias update="sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove"
 alias hosts="sudo vim /etc/hosts"
+alias vim="nvim"
+alias install="sudo pacman -S"
+alias uninstall="sudo pacman -Runs"
+alias update="sudo pacman -Syu"
 
-## File System
+### File System
 alias ll="ls -l"
 alias la="ls -la"
 
-# VPN
+### VPN
 alias htb="sudo openvpn --config '/home/mnelly/.config/htb.ovpn' --daemon"

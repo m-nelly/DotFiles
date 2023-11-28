@@ -1,0 +1,15 @@
+# Wofi Configuration File
+width=25%
+lines=6
+mode=drun
+matching=contains
+term=kitty
+allow_images=true
+allow_markup=false
+dmenu-parse_action=true
+image_size=24
+no_actions=true
+hide_scroll=true
+prompt=search
+x=938
+y=6

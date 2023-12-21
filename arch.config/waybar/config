@@ -1,43 +1,28 @@
-{
+[{
     "layer": "top",
     "position": "top",
     "height": 24,
     "width": 0,
-    "spacing": 4,
-    "modules-left": ["custom/anchor","pulseaudio", "network", "backlight"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["cpu", "memory", "battery", "clock"],
+    "spacing": 2,
+    "modules-left": ["custom/anchor","pulseaudio", "backlight", "battery", "hyprland/workspaces"],
+    "modules-center": [""],
+    "modules-right": ["network", "clock"],
     "hyprland/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{icon}",
-	 "persistent-workspaces": {"*":10},
-	 "active-only": false,
-	 "all-output": true,
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{icon}",
+        "icon-size":13,
+        "active-only": false,
+        "all-output": true,
         "format-icons": {
-            "1": "I",
-            "2": "II",
-            "3": "III",
-            "4": "IV",
-            "5": "V",
-            "6": "VI",
-            "7": "VII",
-            "8": "IIX",
-            "9": "IX",
-            "10": "X",
             "urgent": "",
-            "focused": "",
-            "default": ""
-         }
-    },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10
+            "focused": "",
+            "default": ""
+        }
     },
     "clock": {
         "timezone": "America/Chicago",
-	"format": "{:%I:%M %p}",
+	"format": "{:%I:%M %p %m-%d-%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -64,7 +49,7 @@
     },
     "network": {
         "format-wifi": "{essid}: {signalStrength}% ",
-        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-ethernet": "NET: {ipaddr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
@@ -90,7 +75,7 @@
         "on-click": "pavucontrol"
     },
     "custom/anchor": {
-        "format": "Anchor: "
+        "format": ""
     }
-}
+}]
 

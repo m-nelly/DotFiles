@@ -1,0 +1,31 @@
+color0 #171b24
+color8 #1f2430
+#: black
+
+color1 #f27983
+color9 #f27983
+#: red
+
+color2  #87d96c
+color10 #87d96c
+#: green
+
+color3  #ffcc66
+color11 #ffcc66
+#: yellow
+
+color4  #80bfff
+color12 #80bfff
+#: blue
+
+color5  #dfbfff
+color13 #dfbfff
+#: magenta
+
+color6  #95e6cb
+color14 #95e6cb
+#: cyan
+
+color7 #707a8c
+color15 #cccac2
+#: white

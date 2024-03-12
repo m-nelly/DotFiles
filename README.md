@@ -1,16 +1,16 @@
 # Configuration Files For Various Linux Apps
-
 ## System Info
-OS: Arch  
-Window Manager: Hyprland    
-Display Manager: SDDM  
-Terminal: Kitty  
+OS: Arch/NixOS  
+Window Manager: GNOME/Hyprland  
+Display Manager: GDM  
+Terminal: Alacritty/Kitty  
+Multiplexer: Tmux
 Status Bar: Waybar  
 
 ## Software
-Browser: Vivaldi  
+Browser: Vivaldi/Firefox  
 Notes: Obsidian  
-IDE: Code - OSS  
+IDE: NeoVim  
 
 ## Misc
-Color scheme is based on the Ayu theme and key bindings are supposed to be semi-consistent with defaults for XFCE/Windows. 
+Keybindings stick closely to the defaults for compatibility with workflows I don't manage. I use multiple color schemes to give each system a different look and feel. I generally stick to Gruvbox or Ayu for professional applications and TokyoNight, Dracula, or Catppuccin for personal things. 

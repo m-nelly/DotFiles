@@ -23,4 +23,5 @@ return {
   "neovim/nvim-lspconfig",
   "Bekaboo/dropbar.nvim",
   "preservim/vim-pencil",
+	"williamboman/mason.nvim",
 }

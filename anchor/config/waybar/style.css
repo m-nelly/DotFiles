@@ -5,7 +5,7 @@
 
 window#waybar {
     background-color: transparent;
-    color: #cccac2;
+    color: #c0caf5;
 }
 
 button {
@@ -28,7 +28,7 @@ button {
 }
 
 #workspaces button.active {
-    color: #cccac2;
+    color: #c0caf5;
 }
 
 #workspaces button:hover {
@@ -36,7 +36,7 @@ button {
 }
 
 #workspaces button.urgent {
-    background-color: #f27983;
+    background-color: #f7768e;
 }
 
 
@@ -58,7 +58,7 @@ button {
 #mpd,
 #custom-anchor {
     padding: 2px 10px 0px 6px;
-    color: #cccac2;
+    color: #c0caf5;
     background-color:#0b0e14;
     margin:2px 0px 0px 0px;
     

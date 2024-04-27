@@ -1,14 +1,16 @@
--- lazy 
+vim.g.mapleader = " "
+
+-- lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", 
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
@@ -28,12 +30,15 @@ opt.clipboard = "unnamedplus"
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 5
 
--- telescope 
+-- telescope
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
 vim.keymap.set('n', '<leader>fg', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
+
+-- neotree
+vim.cmd([[nnoremap \ :Neotree source=filesystem reveal=true position=current<cr>]])
 
 -- zen mode
 map("n", "<leader>z", ":lua require'zen-mode'.toggle({window={backdrop=1,width=90},options={cursorline=false}})<cr>")
@@ -70,6 +75,9 @@ vim.cmd('autocmd WinEnter * setlocal cursorline')
 vim.cmd('autocmd WinLeave * setlocal nocursorline')
 
 -- color scheme
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme tokyonight-night]])
 
-
+-- modules
+require("lsp")
+require("notes")
+require("dbg")

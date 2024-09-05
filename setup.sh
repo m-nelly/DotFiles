@@ -1,6 +1,8 @@
 #!/bin/sh
-for i in ~/DotFiles/zsh-plugins.lst; do
-	git clone "https://github.com/$i" /usr/share/zsh/plugins/
-done
+sudo mkdir -p /usr/share/zsh/plugins
+sudo chown $USER /usr/share/zsh/plugins 
 
-cp -ar ~/DotFiles/$(hostname)/ ~/
+while read plugin; do
+	git clone https://github.com/$plugin.git /usr/share/zsh/plugins/$plugin
+done < ~/DotFiles/zsh-plugins.lst
+

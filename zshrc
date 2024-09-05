@@ -49,7 +49,7 @@ bindkey '^[[1;5C' forward-word                    # ctrl + ->
 bindkey '^[[1;5D' backward-word                   # ctrl + <-
 
 # Auto Run
-neofetch --disable gpu packages resolution kernel uptime --speed_shorthand on --cpu_cores off --distro_shorthand on --disk_percent on --colors 6 6 7 7 6 6 --bold on --ascii_colors 8 6
+fastfetch 
 
 # Aliases 
 # Builtins

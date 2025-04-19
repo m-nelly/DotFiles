@@ -1,6 +1,6 @@
 #!/bin/sh
 
-interfaces=$(ip -o link show | awk -F': ' '!/lo/ && !/v/ && !/DOWN/ {print $2}')
+interfaces=$(ip -o link show | awk -F': ' '!/ lo/ && !/v/ && !/DOWN/ {print $2}')
 
 result=""
 

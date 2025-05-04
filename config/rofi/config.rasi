@@ -1,10 +1,9 @@
 configuration {
 	display-drun: "Applications:";
 	display-window: "Windows:";
-	display-emoji: "Emoji:";
 	drun-display-format: "{icon} {name}";
 	font: "Noto Sans Regular 16";
-	modi: "window,drun,emoji";
+	modi: "window,drun";
 	show-icons: true;
 	icon-theme: "Adwaita-Dark";
 }

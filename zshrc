@@ -5,6 +5,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 autoload -U compinit; compinit
 
+# Case Insensitive Path Completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
 export EDITOR=nvim
 
 # Prompt Git Indicator
@@ -24,8 +28,11 @@ function git_branch(){
 }
 
 # Prompt
-PROMPT=$'%F{yellow}%B┌[%F{blue}%D{%I:%M%p}%F{yellow}]-[%F{cyan}%n@%m:%F{blue}%(6~.%-1~/…/%4~.%5~)%f%F{yellow}]\n└─%F{blue}$%F{reset}%b '
-RPROMPT=$'%B%F{#3b4261}$(git_branch)%F{reset}%b'
+# Old Prompt
+# PROMPT=$'%F{yellow}%B┌[%F{blue}%D{%I:%M%p}%F{yellow}]-[%F{cyan}%n@%m:%F{blue}%(6~.%-1~/…/%4~.%5~)%f%F{yellow}]\n└─%F{blue}$%F{reset}%b '
+export LC_ALL=en.US.UTF-8
+PROMPT=$'%B%F{black}%K{yellow} %(6~.%-1~/…/%4~.%5~) %%%F{yellow}%K{282828}%k%f%b '
+RPROMPT=$'%B%F{#504945}$(git_branch)%F{reset}%b'
 
 # PATH
 if [ -d "/usr/local/go/bin" ] ; then

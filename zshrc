@@ -14,20 +14,6 @@ export EDITOR=nvim
 # Prompt Git Indicator
 setopt prompt_subst
 
-# function git_branch(){
-#    remote=$(git remote -v 2> /dev/null | head -n1 | awk -F'[.@]' '{print $2}')
-#    branch=$(git branch 2> /dev/null | cut -d ' ' -f 2)
-#    if [[ $remote == "github" ]]; then
-#        echo "%F{white}%F{#black}%K{white} $branch "
-#    elif [[ $remote == "gitlab" ]] then
-#        echo "%F{white}%F{#black}%K{white} $branch "
-#    elif [[ $remote != "" ]] then
-#        echo "%F{white}%F{black}%K{white} $branch "
-#    else
-#        :
-#    fi
-
-###
 function git_branch() {
   local remote branch git_logo
 
@@ -55,12 +41,9 @@ function git_branch() {
     echo "%F{cyan}%K{cyan}%F{black} ${git_logo} ${branch} "
   fi
 }
-###
 
 # Prompt
-# Old Prompt
-# PROMPT=$'%F{yellow}%B┌[%F{blue}%D{%I:%M%p}%F{yellow}]-[%F{cyan}%n@%m:%F{blue}%(6~.%-1~/…/%4~.%5~)%f%F{yellow}]\n└─%F{blue}$%F{reset}%b '
-export LC_ALL=en.US.UTF-8
+export LC_ALL=en_US.UTF-8
 PROMPT=$'%B%F{black}%K{cyan} %(6~.%-1~/…/%4~.%5~) %% %F{cyan}%K{reset}%k%f%b '
 RPROMPT=$'%B$(git_branch)%F{reset}%b'
 
@@ -86,7 +69,7 @@ bindkey '^[[1;5C' forward-word                    # ctrl + ->
 bindkey '^[[1;5D' backward-word                   # ctrl + <-
 
 # Auto Run
-fastfetch 
+fastfetch && colors
 
 # Aliases 
 # Builtins

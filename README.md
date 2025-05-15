@@ -1,7 +1,7 @@
 # Configuration Files For Various Linux Apps
 ## System Info
 OS: Debian/NixOS  
-Window Manager: GNOME/Hyprland
+Window Manager: GNOME/Hyprland/Sway  
 Display Manager: GDM  
 Terminal: Alacritty
 Multiplexer: Tmux

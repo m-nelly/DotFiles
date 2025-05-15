@@ -1,0 +1,27 @@
+include ~/.config/sway/config.d/*
+include /etc/sway/config.d/*
+
+# Variables
+## Wallpaper
+set $wallpaper /usr/share/backgrounds/sway/ilum.png
+output * bg /usr/share/backgrounds/sway/ilum.png fill
+set $lock swaylock -f -i $wallpaper -s fill
+
+## Needed for xdg-desktop-portal-kde
+exec /usr/lib/xdg-desktop-portal --replace
+exec kdeconnect-indicator
+exec mako
+exec waybar
+
+gaps inner 5
+gaps outer 5
+
+### Output configuration
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output HDMI-A-2 resolution 2560x1080 position 0,0 background $wallpaper fill
+output DVI-D-1 resolution 1920x1080 position 2560,0 background $wallpaper fill
+
+# Titlebars
+default_border pixel
+default_floating_border pixel
+hide_edge_borders smart

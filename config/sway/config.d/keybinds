@@ -1,0 +1,95 @@
+# Variables
+set $mod Mod4
+set $term alacritty
+set $menu rofi -show drun
+
+exec $term
+
+# Application Launchers
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+# System & Session 
+bindsym $mod+q kill
+bindsym $mod+Shift+q exec swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit'
+bindsym $mod+Shift+c reload
+bindsym $mod+F12 exec shutdown now
+bindsym $mod+e exec $lock
+
+# Window Navigation
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Window Layout/Mode
+bindsym $mod+f fullscreen
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+
+bindsym $mod+x splith
+bindsym $mod+y splitv
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+v layout toggle split
+bindsym $mod+a focus parent
+
+# Workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
+
+# Scratchpad
+bindsym $mod+Shift+m move scratchpad
+bindsym $mod+m scratchpad show
+
+# Resize Mode
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize shrink height 10px
+    bindsym k resize grow height 10px
+    bindsym l resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Media Keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshots
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -

@@ -1,0 +1,10 @@
+# Set your laptop screen name
+set $laptop_screen 'eDP-1'
+
+# Set sleep command
+set $sleep exec 'systemctl suspend'
+
+# Clamshell mode or lock & sleep
+bindswitch lid:on exec 'sway output $laptop_screen disable'
+
+bindswitch lid:off output $laptop_screen enable

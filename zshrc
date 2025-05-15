@@ -13,26 +13,56 @@ export EDITOR=nvim
 
 # Prompt Git Indicator
 setopt prompt_subst
-function git_branch(){
-    remote=$(git remote -v 2> /dev/null | head -n1 | awk -F'[.@]' '{print $2}')
-    branch=$(git branch 2> /dev/null | cut -d ' ' -f 2)
-    if [[ $remote == "github" ]]; then
-        echo " $branch"
-    elif [[ $remote == "gitlab" ]] then
-        echo " $branch"
-    elif [[ $remote != "" ]] then
-        echo " $branch"
-    else
-        :
-    fi
+
+# function git_branch(){
+#    remote=$(git remote -v 2> /dev/null | head -n1 | awk -F'[.@]' '{print $2}')
+#    branch=$(git branch 2> /dev/null | cut -d ' ' -f 2)
+#    if [[ $remote == "github" ]]; then
+#        echo "%F{white}%F{#black}%K{white} $branch "
+#    elif [[ $remote == "gitlab" ]] then
+#        echo "%F{white}%F{#black}%K{white} $branch "
+#    elif [[ $remote != "" ]] then
+#        echo "%F{white}%F{black}%K{white} $branch "
+#    else
+#        :
+#    fi
+
+###
+function git_branch() {
+  local remote branch git_logo
+
+  # Check if inside a Git repo
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    return
+  fi
+
+  remote=$(git remote get-url origin 2>/dev/null)
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+
+  # Determine the logo
+  if [[ "$remote" == *"github.com"* ]]; then
+    git_logo=" "  # GitHub
+  elif [[ "$remote" == *"gitlab.com"* ]]; then
+    git_logo=" "  # GitLab
+  elif [[ "$remote" == *"bitbucket.org"* ]]; then
+    git_logo=" "  # Bitbucket
+	elif [[ -n "$remote" ]]; then
+    git_logo=" "  # Generic Git
+  fi
+
+  # Output with formatting if logo was set
+  if [[ -n "$git_logo" ]]; then
+    echo "%F{cyan}%K{cyan}%F{black} ${git_logo} ${branch} "
+  fi
 }
+###
 
 # Prompt
 # Old Prompt
 # PROMPT=$'%F{yellow}%B┌[%F{blue}%D{%I:%M%p}%F{yellow}]-[%F{cyan}%n@%m:%F{blue}%(6~.%-1~/…/%4~.%5~)%f%F{yellow}]\n└─%F{blue}$%F{reset}%b '
 export LC_ALL=en.US.UTF-8
-PROMPT=$'%B%F{black}%K{yellow} %(6~.%-1~/…/%4~.%5~) %%%F{yellow}%K{282828}%k%f%b '
-RPROMPT=$'%B%F{#504945}$(git_branch)%F{reset}%b'
+PROMPT=$'%B%F{black}%K{cyan} %(6~.%-1~/…/%4~.%5~) %% %F{cyan}%K{reset}%k%f%b '
+RPROMPT=$'%B$(git_branch)%F{reset}%b'
 
 # PATH
 if [ -d "/usr/local/go/bin" ] ; then

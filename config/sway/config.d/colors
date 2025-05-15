@@ -1,0 +1,23 @@
+# Variables
+## Font
+set $uifont "Noto 14"
+
+## Colors
+set $bg #2e3440
+set $fg #eceff4
+
+set $black #3b4252
+set $red #bf616a
+set $orange #d08770
+set $yellow #ebcb8b
+set $green #a3be8c
+set $cyan #88c0d0
+set $blue #5e81ac
+set $purple #b48ead
+set $white #d8dee9
+
+# Title Bars            border  backgr. text   indicator child_border
+client.focused          $white  $black  $blue  $black    $white
+client.focused_inactive $black  $black  $fg    $bg       $black
+client.unfocused        $black  $black  $white $bg       $black
+client.urgent           $bg     $red    $fg    $red      $red 

@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
@@ -23,9 +24,8 @@ local map = vim.keymap.set
 opt.compatible = false
 opt.cursorline = true
 opt.mouse = 'a'
-vim.cmd 'syntax enable'
 opt.showmatch = true
-opt.showcmd = true
+opt.showcmd = false
 opt.clipboard = "unnamedplus"
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 5
@@ -38,6 +38,7 @@ vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
 
 -- neotree
+vim.keymap.set('n', '<leader>ft',"<Cmd>Neotree float<CR>")
 vim.cmd([[nnoremap \ :Neotree source=filesystem reveal=true position=current<cr>]])
 
 -- zen mode
@@ -75,7 +76,7 @@ vim.cmd('autocmd WinEnter * setlocal cursorline')
 vim.cmd('autocmd WinLeave * setlocal nocursorline')
 
 -- color scheme
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme gruvbox]])
 
 -- modules
 require("lsp")

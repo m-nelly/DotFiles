@@ -46,7 +46,7 @@ function git_branch() {
 export LC_ALL=en_US.UTF-8
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 PROMPT=$'%B%F{black}%K{cyan} %(6~.%-1~/…/%4~.%5~) %% %F{cyan}%K{reset}%k%f%b '
-RPROMPT=$'%B%F{cyan}%K{cyan}%F{black}$(git_branch)($VIRTUAL_ENV_PROMPT) %F{reset}%b'
+RPROMPT=$'%B%F{cyan}%K{cyan}%F{black}$(git_branch) $VIRTUAL_ENV_PROMPT %F{reset}%b'
 
 # PATH
 if [ -d "/usr/local/go/bin" ] ; then

@@ -38,14 +38,15 @@ function git_branch() {
 
   # Output with formatting if logo was set
   if [[ -n "$git_logo" ]]; then
-    echo "%F{cyan}%K{cyan}%F{black} ${git_logo} ${branch} "
+    echo " ${git_logo} ${branch} "
   fi
 }
 
 # Prompt
 export LC_ALL=en_US.UTF-8
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 PROMPT=$'%B%F{black}%K{cyan} %(6~.%-1~/…/%4~.%5~) %% %F{cyan}%K{reset}%k%f%b '
-RPROMPT=$'%B$(git_branch)%F{reset}%b'
+RPROMPT=$'%B%F{cyan}%K{cyan}%F{black}$(git_branch) $VIRTUAL_ENV_PROMPT %F{reset}%b'
 
 # PATH
 if [ -d "/usr/local/go/bin" ] ; then
@@ -75,7 +76,7 @@ fastfetch && colors
 # Builtins
 alias ls='eza --group-directories-first'
 alias lt="ls -T"
-alias cat="bat -p"
+alias cat="batcat -p"
 export BAT_THEME="base16"
 alias vgrep="grep -B1 -A1 --color=auto"
 
@@ -88,9 +89,13 @@ alias ip='ip --color=auto'
 alias notes="cd ~/notes"
 alias vim="nvim"
 
+# Python
+alias activate="source .venv/bin/activate"
+
 # Updates
-alias install="sudo pacman -Syu"
-alias uninstall="sudo pacman -Runs"
+alias install="sudo apt update && sudo apt install"
+alias uninstall="sudo apt remove"
+alias update="sudo apt update && sudo apt -y upgrade"
 
 # VPN
 alias htb="sudo openvpn --daemon --config ~/.config/htb.ovpn"
